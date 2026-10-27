@@ -1,6 +1,6 @@
 BITS 32
 section .text
-global putchar_fd
+    global putchar_fd
 
 putchar_fd:
     push ebx
@@ -11,12 +11,5 @@ putchar_fd:
     mov eax, 4            ; sys_write
     int 0x80
 
-    test eax, eax
-    js .error
-
-    pop ebx
-    ret
-
-.error:
     pop ebx
     ret

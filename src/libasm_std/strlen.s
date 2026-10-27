@@ -3,13 +3,12 @@ section .text
     global strlen
 
 strlen:
-    xor ecx, ecx
+    mov  edx, [esp + 4]
+    xor  eax, eax
 .loop:
-    mov al, [edi + ecx]
-    test al, al
-    je .done
-    inc ecx
-    jmp .loop
+    cmp  byte [edx + eax], 0
+    je   .done
+    inc  eax
+    jmp  .loop
 .done:
-    mov eax, ecx
     ret
